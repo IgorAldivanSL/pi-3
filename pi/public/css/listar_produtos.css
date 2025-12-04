@@ -1,0 +1,205 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE ADMIN)
+=========================== */
+:root {
+    /* Paleta */
+    --cor-primaria: #A0522D;        /* Sienna - Destaque Principal */
+    --cor-primaria-hover: #8B4513;  
+    --cor-secundaria: #3D2D2D;      /* Texto Principal */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-claro: #F9F7F4;     /* Fundo principal do Admin */
+    --cor-superficie: #FFFFFF;      /* Branco para a tabela/card */
+    
+    /* Elementos */
+    --cor-borda-suave: #EDEAE4;     /* Borda do card */
+    --cor-muted: #6B7280;           /* Texto Secundário */
+    --cor-erro: #C62828;            /* Botão Excluir */
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05); 
+    --cor-destaque-preco: #D4AF37;  /* Ouro velho para o preço */
+
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;      
+}
+
+/* ===========================
+   LAYOUT GERAL E TÍTULO
+=========================== */
+.admin-content-wrapper {
+    width: 100%;
+}
+
+.cafe-listagem {
+    width: 100%;
+}
+
+.cafe-listagem h2 {
+    font-family: var(--font-serif);
+    color: var(--cor-secundaria);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ===========================
+   CONTAINER DE CARDS
+=========================== */
+.cafes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px)); 
+    gap: 25px; 
+    width: 100%;
+    
+    /* NOVIDADE: Centraliza os cards no container */
+    justify-content: center; 
+}
+
+/* ===========================
+   CARD DO PRODUTO
+=========================== */
+.cafe-card {
+    background-color: var(--cor-superficie);
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px; /* Adiciona uma altura mínima para padronizar */
+}
+
+/* Imagem e Preço */
+.cafe-imagem {
+    position: relative;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 16 / 9; 
+}
+.cafe-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cafe-preco {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Nome e Descrição */
+.cafe-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--cor-secundaria);
+    margin: 0 0 8px 0;
+}
+
+/* NOVIDADE: Limita a descrição a 3 linhas com reticências */
+.cafe-card p {
+    color: var(--cor-muted);
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+    flex-grow: 1; 
+
+    /* Propriedades para truncar o texto após 3 linhas */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+     /* Define o limite para 3 linhas */
+    line-height: 1.4; /* Altura da linha para controle preciso */
+    max-height: calc(1.4em * 3); /* Altura máxima baseada no line-height */
+}
+
+
+/* Informações Detalhadas (Grid 2x2) */
+.cafe-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5px 10px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--cor-borda-suave);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--cor-muted);
+}
+.cafe-info span:nth-child(odd) {
+    font-weight: 500;
+    color: var(--cor-secundaria);
+}
+.info-dado {
+    font-weight: 400;
+    color: var(--cor-primaria);
+}
+
+/* ===========================
+   BOTÕES DE AÇÃO (Padrão Admin)
+=========================== */
+.card-botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Garante que os botões fiquem alinhados na base */
+    padding-top: 10px;
+}
+
+.card-botoes a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 50px;
+    margin: 0 5px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.botao-editar {
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    background: transparent;
+}
+.botao-editar:hover {
+    background: var(--cor-primaria);
+    color: var(--cor-superficie);
+}
+
+.botao-excluir {
+    color: var(--cor-erro);
+    border: 2px solid var(--cor-erro);
+    background: transparent;
+}
+.botao-excluir:hover {
+    background: var(--cor-erro);
+    color: var(--cor-superficie);
+}
+
+
+/* ===========================
+   RESPONSIVIDADE (Cards)
+=========================== */
+@media (max-width: 600px) {
+    .cafes-container {
+        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+    }
+    .card-botoes a {
+        padding: 10px 10px;
+        font-size: 0.9rem;
+    }
+}

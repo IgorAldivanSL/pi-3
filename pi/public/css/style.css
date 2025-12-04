@@ -1,0 +1,821 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+   NOVAS DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE PREMIUM)
+=========================== */
+:root {
+    /* Paleta - Foco em Tons Ricos e Terrosos */
+    --cor-primaria: #A0522D;        /* Sienna - Marrom escuro e quente, cor de café torrado */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Um tom mais profundo para o hover */
+    --cor-secundaria: #3D2D2D;      /* Quase preto, mas suave para o texto principal */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-claro: #F9F7F4;     /* Creme Suave - Fundo principal, mais quente que branco puro */
+    --cor-fundo-suave: #EDEAE4;     /* Bege para seções de contraste (Cafés, Footer) */
+    --cor-fundo-card: #FFFFFF;      /* Branco puro para destacar cards e o Header */
+    
+    /* Elementos */
+    --cor-destaque: #D4AF37;        /* Ouro Velho - Para preços e ícones de destaque */
+    --cor-fundo-input: #FFFFFF;     /* Fundo input branco (formulários) */
+    --cor-borda-input: #DDD;        /* Borda suave para formulários */
+    --sombra-card: 0 8px 15px rgba(0, 0, 0, 0.05); /* Sombra mais suave e elevada */
+    --cor-superficie: #FFFFFF;      /* Branco para botões de carrossel */
+    
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; /* Para Títulos - Toque premium/clássico */
+    --font-sans: 'Poppins', sans-serif;      /* Para Corpo - Limpa e legível */
+
+    /* Variáveis para refinamento da responsividade, mantendo a paleta */
+    --cor-texto-suave: #695646;     
+    --cor-borda-divisoria: #D7C6B7;
+}
+
+/* ===========================
+   RESET / TIPOGRAFIA
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+}
+
+body {
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-secundaria);
+}
+
+/* Títulos Padronizados */
+h1, h2 { 
+    font-family: var(--font-serif); 
+    color: var(--cor-secundaria); 
+    font-weight: 700; 
+    line-height: 1.2; 
+}
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.8rem; margin-bottom: 25px;}
+
+h3 { 
+    font-family: var(--font-serif); 
+    color: var(--cor-secundaria); 
+    font-weight: 600; 
+}
+
+/* Garantir que os parágrafos usem a cor suave, melhorando a leitura */
+.conteudo-texto p, 
+.beneficios-texto-container p, 
+.sobre-texto p,
+.review-card p {
+    color: var(--cor-texto-suave); 
+    font-weight: 400; 
+}
+
+
+/* ===========================
+   CONTAINER GLOBAL PARA SEÇÕES
+=========================== */
+.content-wrapper {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+    width: 100%;
+    background: var(--cor-fundo-card); 
+    padding: 18px 20px; 
+    display: flex;
+    justify-content: center;
+    /* Ajuste da borda para a nova variável, mantendo o visual suave */
+    border-bottom: 1px solid var(--cor-borda-divisoria); 
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.logo {
+    width: 65px;
+}
+
+.menu-container {
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 25px;
+    padding-right: 30px; 
+}
+
+.menu-container nav {
+    margin: 0 auto; 
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--cor-secundaria);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-secundaria); 
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus { /* Adicionado foco para acessibilidade */
+    color: var(--cor-primaria);
+    background-color: var(--cor-fundo-suave); 
+    outline: none; /* Mantendo o foco visual no hover */
+}
+
+/* Ícone carrinho */
+.icone-carrinho i {
+    font-size: 28px;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icone-carrinho i:hover {
+    color: var(--cor-primaria-hover);
+}
+
+.botao-login {
+    padding: 8px 18px;
+    background: var(--cor-primaria);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.botao-login:hover {
+    background: var(--cor-primaria-hover);
+}
+
+/* ===========================
+   ESTILO DOS BOTÕES (Padronizado)
+=========================== */
+
+/* Botão Primário (Ver Cafés, Conhecer mais, Comprar, Enviar) */
+.botao-reservar, .btn-comprar, .enviar-contato {
+    padding: 15px 30px;
+    border: none;
+    background: var(--cor-primaria);
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.botao-reservar:hover, .btn-comprar:hover, .enviar-contato:hover {
+    background: var(--cor-primaria-hover);
+}
+
+/* Botão Secundário (Tirar Dúvidas) */
+.botao-duvidas {
+    padding: 15px 30px;
+    border: 2px solid var(--cor-primaria);
+    background: transparent;
+    color: var(--cor-primaria);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.botao-duvidas:hover {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+/* ===========================
+   BANNER PRINCIPAL
+=========================== */
+.banner {
+    width: 100%;
+    padding: 100px 0;
+    background: var(--cor-fundo-claro);
+}
+
+.banner .coluna-1 {
+    width: 50%;
+}
+
+.banner .coluna-2 {
+    width: 50%;
+}
+
+.conteudo-texto h1 {
+    font-size: 3rem; 
+    margin-bottom: 20px;
+}
+
+.conteudo-texto p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: var(--cor-secundaria);
+}
+
+.botoes {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.imagem-principal img {
+    width: 100%; 
+    max-width: 600px; 
+}
+
+/* ===========================
+   LISTA DE CAFÉS (CARDS) - ESTRUTURA CARROSSEL
+=========================== */
+.cafes-lista {
+    padding: 100px 0;
+    background: var(--cor-fundo-suave); 
+    /* Garante que o H2 não fique restrito à largura do content-wrapper no display flex */
+    text-align: center; 
+}
+
+.cafes-lista h2 {
+    /* Ocupa a largura total do content-wrapper para centralizar o texto */
+    width: 100%; 
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Wrapper do Carrossel (Contém setas e pista) */
+.carousel-wrapper {
+    position: relative;
+    padding: 0 60px; 
+    max-width: 1100px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Pista de rolagem horizontal */
+.carousel-track {
+    width: 100%; 
+    display: flex;
+    overflow-x: scroll; /* Permite rolar horizontalmente */
+    scroll-snap-type: x mandatory; /* Faz o scroll "parar" em cada card */
+    -webkit-overflow-scrolling: touch; 
+    gap: 0; 
+    padding-bottom: 20px; 
+    
+    /* Remove a barra de rolagem (Chrome, Safari, Edge) */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Remove a barra de rolagem (IE, Chrome, Safari) */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.cafe-card {
+    background: var(--cor-fundo-card);
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: var(--sombra-card);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; 
+
+    flex: none; 
+    width: 320px; 
+    min-width: 320px; 
+    max-width: 320px; 
+    
+    /* Usa margin-right para simular o gap */
+    margin-right: 30px; 
+    
+    scroll-snap-align: start; 
+}
+.cafe-card:hover {
+    transform: translateY(-5px);
+}
+
+.cafe-imagem {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* Proporção mais horizontal */
+}
+
+.cafe-imagem img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cafe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px; 
+    margin-bottom: 10px;
+}
+
+.cafe-preco {
+    background: var(--cor-destaque); 
+    color: var(--cor-secundaria);
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Truncamento da Descrição para evitar vazamento */
+.cafe-descricao {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    text-align: left;
+    
+    /* Limita a 2 linhas com reticências */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    line-height: 1.5;
+    max-height: calc(1.5em * 2); 
+
+    flex-grow: 1; 
+}
+
+/* NOVIDADE: Remove a margem do último item para evitar um espaço extra desnecessário */
+.cafe-card:last-child {
+    margin-right: 0;
+}
+
+.cafe-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+    row-gap: 8px;
+}
+
+.info-dado {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.btn-comprar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.cafe-card a {
+    margin-top: auto; 
+    /* Adicionado para responsividade */
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo dos botões de navegação (setas) */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cor-superficie);
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.carousel-nav:hover,
+.carousel-nav:focus {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.nav-prev {
+    left: 10px;
+}
+
+.nav-next {
+    right: 10px;
+}
+
+
+/* ===========================
+   BENEFÍCIOS
+=========================== */
+.beneficios-section {
+    padding: 100px 0;
+    background: var(--cor-fundo-card);
+}
+
+.beneficios-imagem img {
+    width: 450px;
+    max-width: 100%;
+    margin-right: 50px; 
+}
+
+.beneficios-texto-container {
+    max-width: 600px;
+}
+
+.beneficios-texto-container p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.beneficios-lista {
+    margin-top: 30px;
+}
+
+.beneficio-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.beneficio-item .icon {
+    font-size: 32px;
+    color: var(--cor-destaque); 
+    margin-right: 20px;
+    min-width: 32px; 
+}
+
+.beneficio-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+}
+
+/* ===========================
+   SOBRE
+=========================== */
+.secao-sobre {
+    padding: 100px 0;
+    background: var(--cor-fundo-claro);
+}
+
+.sobre-texto {
+    max-width: 600px;
+}
+
+.sobre-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.sobre-imagem img {
+    width: 550px;
+    max-width: 100%;
+}
+
+/* ===========================
+   AVALIAÇÕES
+=========================== */
+.reviews-container {
+    padding: 100px 0;
+    background: var(--cor-fundo-suave); 
+    /* Garante que o H2 não fique restrito à largura do content-wrapper no display flex */
+    text-align: center; 
+}
+
+.reviews-container h2 {
+    /* Ocupa a largura total do content-wrapper para centralizar o texto */
+    width: 100%; 
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.reviews {
+    display: flex;
+    justify-content: center; /* Garante que os itens são centralizados */
+    gap: 30px;
+    flex-wrap: wrap;
+    
+    /* NOVIDADE: Adiciona uma largura máxima e centraliza a pista de reviews */
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.review-card {
+    background: var(--cor-fundo-card);
+    padding: 30px;
+    /* ALTERADO: Largura ligeiramente menor para encaixar melhor */
+    width: 280px; 
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+/* ... (restante do review-card) ... */
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--cor-destaque); 
+}
+
+.review-card .stars i {
+    color: var(--cor-destaque);
+    margin-bottom: 10px;
+}
+
+.review-card p {
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cor-secundaria);
+}
+
+/* ===========================
+   CONTATO (FORMULÁRIO)
+=========================== */
+.contato-section {
+    padding: 48px 0;
+    background: var(--cor-fundo-card);
+}
+
+.contato-texto {
+    width: 45%; 
+    max-width: 500px; 
+}
+
+.contato-texto p {
+    font-size: 1.1rem; 
+    margin-bottom: 10px; 
+}
+
+.contato-texto img {
+    display: block; 
+    margin: 15px auto 0; 
+    width: 100%;        
+    height: auto;       
+    max-width: 500px; 
+}
+
+.contato-form {
+    width: 45%; 
+    max-width: 450px; 
+    
+}
+
+.contato-form .input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Input e Textarea Padronizados */
+.contato-section input, 
+.contato-section textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 8px;
+    background: var(--cor-fundo-input);
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.contato-section input:focus, 
+.contato-section textarea:focus {
+    border-color: var(--cor-primaria); 
+    outline: none;
+    box-shadow: 0 0 0 1px var(--cor-primaria);
+}
+
+.contato-section textarea {
+    resize: vertical;
+}
+
+/* IMAGEM DA SEÇÃO CONTATO */
+.contato-texto img {
+    display: block; 
+    margin: 30px auto 0; 
+    width: 100%;        
+    height: auto;       
+    max-width: 500px; 
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    display: flex;
+    text-align: center;
+    padding: 48px 0; 
+    background: var(--cor-fundo-suave);
+    color: var(--cor-secundaria);
+}
+
+/* ===========================
+   RESPONSIVO IMPLEMENTADO (Revisado para todos os detalhes)
+=========================== */
+
+/* ------------------------------------- */
+/* BREAKPOINT 1100px (Desktop Pequeno/Tablet Horizontal) */
+/* ------------------------------------- */
+@media (max-width: 1100px) {
+    /* Ajustes na tipografia */
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .conteudo-texto p { font-size: 1.2rem; }
+    
+    .banner { padding: 80px 0; }
+    
+    
+
+    /* Carrossel: Ajusta o padding para telas mais estreitas */
+    .carousel-wrapper {
+        max-width: 900px; 
+        padding: 0 40px; 
+    }
+}
+
+
+/* ------------------------------------- */
+/* BREAKPOINT 900px (Tablet Vertical) - Layout de coluna móvel */
+/* ------------------------------------- */
+@media (max-width: 900px) {
+    
+    /* Layout de Colunas em Mobile: Transforma em coluna e adiciona espaçamento */
+    .banner .content-wrapper,
+    .beneficios-section .content-wrapper,
+    .secao-sobre .content-wrapper,
+    .contato-section .content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px; 
+    }
+
+    .coluna-1, .coluna-2, .contato-form, .contato-texto {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Header/Menu */
+    nav ul { display: none; }
+    .menu-toggle { display: block; }
+    .menu-container { gap: 10px; padding-right: 0;} 
+    .logo { width: 50px; }
+    
+    /* Banner */
+    .banner { padding: 60px 0; }
+    .conteudo-texto { order: 1; }
+    .imagem-principal { order: 2; margin-top: 20px;} 
+
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 30px;}
+    .conteudo-texto p { font-size: 1.1rem; }
+
+    .botoes { justify-content: center; }
+    
+    /* Lista de Cafés - Carrossel */
+    .carousel-wrapper {
+        padding: 0 20px; 
+        max-width: 100%; 
+    }
+    .carousel-nav {
+        display: none; 
+    }
+    .cafe-card {
+        width: 280px; 
+        min-width: 280px;
+        margin-right: 20px; 
+    }
+    
+    /* Benefícios / Sobre */
+    .beneficios-imagem, .sobre-imagem { order: 1; margin-right: 0; } 
+    .beneficios-texto-container, .sobre-texto { order: 2; margin-top: 0;}
+    
+    .beneficio-item { justify-content: flex-start; text-align: left;}
+
+    /* Reviews */
+    .reviews {
+        gap: 20px; 
+        max-width: 600px;
+    }
+    .review-card {
+        width: 100%; 
+        max-width: 300px;
+    }
+
+    /* Contato */
+    .contato-form .input-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    .contato-texto img {
+        max-width: 250px; 
+        margin: 20px auto 0;
+    }
+    .contato-form {
+        margin-top: 0;
+    }
+
+    /* Padding de Seções */
+    .banner, .cafes-lista, .beneficios-section, .secao-sobre, .reviews-container, .contato-section {
+        padding: 60px 0;
+    }
+}
+
+
+/* ------------------------------------- */
+/* BREAKPOINT 500px (Mobile Estreito) */
+/* ------------------------------------- */
+@media (max-width: 500px) {
+    
+    .content-wrapper {
+        padding-left: 15px; 
+        padding-right: 15px;
+    }
+
+    /* Redução final de tipografia */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    
+    /* Botões empilhados */
+    .botoes {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .botao-reservar, .botao-duvidas {
+        width: 100%;
+        max-width: 100%; 
+    }
+
+    /* Padding de Seções */
+    .banner, .cafes-lista, .beneficios-section, .secao-sobre, .reviews-container, .contato-section {
+        padding: 40px 0; 
+    }
+    
+    /* Footer */
+    footer {
+        padding: 30px 0;
+    }
+}

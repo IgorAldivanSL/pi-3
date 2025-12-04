@@ -1,0 +1,264 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Poppins para corpo e Playfair Display para Títulos)
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE CLIENTE)
+=========================== */
+:root {
+    /* Paleta da Marca */
+    --cor-primaria: #A0522D;        /* Sienna - Marrom de destaque (Botões/Links) */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover */
+    --cor-fundo-claro: #F9F7F4;     /* Creme Suave da Home (Fundo principal) */
+    --cor-superficie: #FFFFFF;      /* Branco puro para sidebar e cards */
+    --cor-texto-principal: #3D2D2D; /* Quase preto, para legibilidade */
+    --cor-borda-suave: #EDEAE4;     /* Bege claro para bordas e linhas divisórias */
+    --cor-muted: #6B7280;           /* Cinza para texto secundário */
+    --cor-erro: #C62828;            /* Vermelho para Cancelar */
+    --cor-erro-hover: #A10F0F;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif; 
+}
+
+/* ===========================
+   RESET / BASE
+=========================== */
+*{
+    box-sizing:border-box;
+    font-family: var(--font-sans);
+}
+body{
+    margin:0;
+    background:var(--cor-fundo-claro);
+    color:var(--cor-texto-principal);
+}
+
+/* ------------------------------------- */
+/* CLIENT SHELL - LAYOUT DE DUAS COLUNAS */
+/* ------------------------------------- */
+.client-shell{
+    display:flex;
+    min-height:100vh;
+}
+.client-sidebar{
+    width:240px;
+    padding:24px 20px;
+    background:var(--cor-superficie);
+    border-right:1px solid var(--cor-borda-suave);
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+    flex-shrink: 0; 
+}
+
+/* Marca */
+.client-sidebar .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--cor-texto-principal);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.client-sidebar img{
+    height:36px;
+    width: 36px;
+    object-fit: cover;
+}
+
+/* Navegação */
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+.nav button{
+    background:transparent;
+    border:none;
+    padding:10px 15px;
+    text-align:left;
+    border-radius:6px;
+    color:var(--cor-muted);
+    cursor:pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.nav button:hover, .nav button.active {
+    background:var(--cor-borda-suave);
+    color:var(--cor-primaria);
+    font-weight:600;
+}
+
+/* Logout */
+.logout-form{
+    margin-top:auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-borda-suave);
+}
+.logout-form button{
+    width:100%;
+    padding:12px;
+    border-radius:50px;
+    border:2px solid var(--cor-primaria);
+    background:transparent;
+    cursor:pointer;
+    color:var(--cor-primaria);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.logout-form button:hover{
+    background:var(--cor-primaria);
+    color:var(--cor-superficie);
+}
+
+/* ------------------------------------- */
+/* CLIENT MAIN - CONTEÚDO PRINCIPAL */
+/* ------------------------------------- */
+.client-main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+
+.client-content{
+    padding:30px;
+}
+/* Estilo para Títulos Internos */
+.client-content h1, .client-content h2 {
+    font-family: var(--font-serif);
+    color: var(--cor-texto-principal);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.client-content h1 { font-size: 2.2rem; }
+.client-content h2 { font-size: 1.8rem; }
+
+
+/* ------------------------------------- */
+/* COMPONENTES ESPECÍFICOS (ASSINATURAS/CARRINHO) */
+/* ------------------------------------- */
+.assinaturas-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px; /* Mais espaçamento */
+}
+.assinatura-card{
+    display:flex;
+    gap:20px; /* Mais espaçamento interno */
+    background:var(--cor-superficie);
+    padding:20px;
+    border-radius:10px;
+    box-shadow:var(--sombra-card);
+    width:100%;
+    max-width:750px; /* Levemente mais largo */
+}
+.assinatura-imagem img{
+    width:150px; /* Imagem um pouco maior */
+    height:100px;
+    object-fit:cover;
+    border-radius:8px;
+}
+.assinatura-info {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+.assinatura-info h4{
+    margin:0 0 8px 0;
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+}
+.assinatura-info p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.small-muted{
+    color:var(--cor-muted);
+    font-size:0.9rem;
+}
+
+/* Botão de Ação (Cancelar) */
+.btn-cancelar {
+    background: var(--cor-erro);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 50px; /* Arredondado como os botões principais */
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    width: fit-content; /* Ocupa apenas o necessário */
+    transition: background-color 0.2s;
+}
+
+.btn-cancelar:hover {
+    background: var(--cor-erro-hover);
+}
+
+.status-cancelada {
+    color: var(--cor-muted);
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/* ------------------------------------- */
+/* RESPONSIVIDADE (Painel Cliente) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .client-shell {
+        flex-direction: column;
+    }
+    .client-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .client-sidebar .brand {
+        display: none; 
+    }
+    .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .nav button {
+        width: auto;
+        text-align: center;
+    }
+    .logout-form {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+    .logout-form button {
+        display: none; /* Simplifica o logout no mobile */
+    }
+    .client-content {
+        padding: 20px;
+    }
+    .assinatura-card {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 15px;
+    }
+    .assinatura-imagem img {
+        width: 100%;
+        height: auto;
+    }
+    .btn-cancelar {
+        width: 100%;
+        text-align: center;
+    }
+}

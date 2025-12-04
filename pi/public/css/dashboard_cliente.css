@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ===========================
+   CORES BASE DO SITE HOME
+=========================== */
+:root {
+    --cor-primaria: #8B4513; /* Marrom Sela - Destaque */
+    --cor-secundaria: #4b2e19; /* Marrom Escuro - Títulos/Texto */
+    --cor-fundo-claro: #fff7f0; /* Fundo Levemente Amarelado (Banner/Reviews) */
+    --cor-fundo-painel: #F8F8F8; /* Um cinza claro limpo para a área de fundo do Admin */
+    --cor-fundo-sidebar: #EFEFEF; /* Um pouco mais escuro para a barra */
+}
+
+/* ===========================
+   RESET/ESTRUTURA
+=========================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Aplicando a fonte Poppins da Home em todo o Admin */
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    /* Usando um fundo claro, mas limpo */
+    background-color: var(--cor-fundo-painel);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Removido overflow: hidden, pode ser necessário em telas menores */
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    /* Removendo as margens do body para o container principal */
+    margin: 0;
+}
+
+/* ===========================
+   SIDEBAR (Barra Lateral)
+=========================== */
+.sidebar {
+    /* Ajustando o cinza para combinar melhor com a paleta */
+    background-color: var(--cor-fundo-sidebar);
+    width: 90px;
+    min-width: 70px;
+    /* Mantendo as margens para "desgrudar" das bordas da tela */
+    margin: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    /* Mantendo o raio de borda suave */
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.sidebar img.logo {
+    width: 48px;
+    margin-bottom: 20px;
+}
+
+/* Estilo do Botão Principal do Sidebar */
+.sidebar button {
+    /* Substituindo o Laranja pela Cor Primária do Café */
+    background-color: var(--cor-primaria); /* #8B4513 */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.sidebar button img {
+    width: 20px;
+    height: 20px;
+    /* Se os ícones forem escuros, ajuste a cor para branco se necessário.
+       Caso contrário, mantenha o código atual. */
+}
+
+/* Hover do Botão Principal */
+.sidebar button:hover {
+    /* Ajustando o hover para um marrom mais escuro coerente com a Home */
+    background-color: #6b3410; /* Cor de hover do .botao-login da Home */
+}
+
+
+
+.fundo-branco button {
+    background-color: #fff;
+    /* Substituindo a borda Laranja pela cor Primária do Café */
+    border: 2px solid var(--cor-primaria); /* #8B4513 */
+    margin-bottom: 10px;
+}
+
+/* Hover do Botão Secundário */
+.fundo-branco button:hover {
+    /* Usando o fundo claro da Home como hover */
+    background-color: var(--cor-fundo-claro); /* #fff7f0 */
+}
+
+/* ===========================
+   WRAPPER INTERNO PARA CENTRALIZAÇÃO AJAX
+=========================== */
+/* Centraliza o conteúdo dentro do painel */
+.admin-content-wrapper {
+    /* Largura máxima para evitar que o conteúdo se estique demais */
+    max-width: 900px; 
+    /* Centraliza o bloco na horizontal */
+    margin-left: auto;
+    margin-right: auto;
+    /* Garante que o texto comece de forma legível */
+    padding-top: 20px;
+}
+
+/* ===========================
+   CONTEÚDO PRINCIPAL DO PAINEL
+=========================== */
+.painel-conteudo {
+    flex: 1;
+    /* Mantendo o fundo branco para o conteúdo principal */
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-y: auto;
+    min-width: 0;
+    /* Retirado o justify-content/align-items do conteúdo para permitir o layout normal */
+    /* display: block; ou mantenha o que está se precisar de flex para layouts internos */
+    display: block; 
+}
+

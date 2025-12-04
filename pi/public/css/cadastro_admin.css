@@ -1,0 +1,203 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE ADMIN)
+=========================== */
+:root {
+    /* Paleta - Tons Ricos e Terrosos do Admin */
+    --cor-primaria: #A0522D;        /* Sienna - Marrom de destaque (Botões) */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover do botão */
+    --cor-secundaria: #3D2D2D;      /* Quase preto, mas suave para Títulos/Texto */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-externo: #F9F7F4;   /* Creme Suave da Home/Admin */
+    --cor-fundo-card: #FFFFFF;      /* Branco puro para o card */
+    
+    /* Elementos */
+    --cor-fundo-input: #F9F9F9;     /* Fundo input quase branco */
+    --cor-borda-input: #DDD;
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+    
+    /* Mensagens */
+    --cor-sucesso: #4CAF50;
+    --cor-fundo-sucesso: #e8f5e9;
+    --cor-erro: #cc0000;
+    --cor-fundo-erro: #fcebeb;
+
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;      
+}
+
+/* ===========================
+   RESET / ESTRUTURA GLOBAL
+=========================== */
+* {
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+}
+
+
+
+/* Container do Painel Admin que envolve o formulário (para quando for carregado via AJAX) */
+.admin-content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===========================
+   CADASTRO CONTAINER (O CARD)
+=========================== */
+.cadastro-container {
+   background-color: var(--cor-fundo-card);
+   padding: 40px;
+   border-radius: 10px;
+   box-shadow: var(--sombra-card);
+   width: 100%; 
+   max-width: 400px; /* Tamanho padrão de formulários admin */
+   text-align: center;
+}
+
+.cadastro-container img.logo {
+   /* Se for usado no contexto do painel, a logo pode ser menor ou oculta */
+   width: 70px; 
+   margin-bottom: 20px;
+   display: none; /* Oculta a logo no formulário admin para manter a limpeza */
+}
+
+/* Título com a Fonte Serif e cor principal */
+.cadastro-container h2 {
+   font-family: var(--font-serif);
+   margin-bottom: 30px;
+   font-size: 1.8rem; /* Tamanho ajustado para títulos internos do Admin */
+   color: var(--cor-secundaria);
+   font-weight: 700;
+   text-align: center;
+}
+
+/* ===========================
+   INPUTS DE TEXTO
+=========================== */
+.input-group {
+   position: relative;
+   margin-bottom: 18px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+   height: 50px;
+   width: 100%;
+   padding: 12px;
+   border: 1px solid var(--cor-borda-input);
+   border-radius: 8px;
+   background-color: var(--cor-fundo-input);
+   font-size: 1rem;
+   color: var(--cor-secundaria);
+   transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Destaque ao Focar */
+.input-group input:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--cor-primaria);
+}
+
+/* ===========================
+   CHECKBOX (Ativo)
+=========================== */
+.checkbox-container {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--cor-secundaria);
+}
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+.checkbox-container input[type="checkbox"] {
+    /* Estilização básica do checkbox */
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    accent-color: var(--cor-primaria); /* Usa a cor de destaque */
+}
+
+/* ===========================
+   BOTÃO CADASTRAR (Padrão do Admin)
+=========================== */
+.botao-principal {
+    width: 100%;
+    background-color: var(--cor-primaria); 
+    color: white;
+    border: none;
+    padding: 12px; /* Ligeiramente menos padding que o botão principal da Home */
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+.botao-principal:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* ===========================
+   MENSAGENS DE ERRO/SUCESSO
+=========================== */
+.mensagem-erro {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: left;
+    background-color: var(--cor-fundo-erro);
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+    font-size: 0.9rem;
+}
+
+.mensagem-sucesso {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+    background-color: var(--cor-fundo-sucesso);
+    color: var(--cor-sucesso);
+    border: 1px solid var(--cor-sucesso);
+}
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+@media (max-width: 768px) {
+   .cadastro-container {
+       width: 90%;
+       max-width: none;
+   }
+   .cadastro-container h2 {
+       font-size: 1.6rem;
+   }
+}
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+    .cadastro-container {
+        padding: 30px 20px;
+    }
+}

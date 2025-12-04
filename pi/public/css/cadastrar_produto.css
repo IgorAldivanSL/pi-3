@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ===========================
+   DEFINIÇÕES DE COR (DO PAINEL ADMIN)
+=========================== */
+:root {
+    --cor-primaria: #8B4513; /* Marrom Sela - Destaque */
+    --cor-secundaria: #4b2e19; /* Marrom Escuro - Títulos/Texto */
+    --cor-fundo-input: #f8f8f8; /* Cinza bem claro */
+    --cor-borda-input: #bbb;
+}
+
+/* ===========================
+   RESET / TIPOGRAFIA
+=========================== */
+* {
+    box-sizing: border-box;
+    /* Usando Poppins, padrão da Home */
+    font-family: "Poppins", sans-serif; 
+}
+
+/* O body e o admin-content-wrapper já estão no dashboard.css,
+   mas estas regras garantem que o arquivo funcione sozinho (se for o caso) */
+
+
+/* ===========================
+   WRAPPER PARA CENTRALIZAÇÃO
+=========================== */
+/* Esta classe deve ser adicionada no dashboard.css ou aqui se o arquivo for standalone */
+.admin-content-wrapper {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+/* ===========================
+   PRODUTO CONTAINER (O CARD)
+=========================== */
+.produto-container {
+    background-color: #ffffff;
+    padding: 30px;
+    /* Borda e Sombra do padrão Home/Cards de Café */
+    border-radius: 15px; 
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    /* Mantive 400px para formulários que tendem a ser mais estreitos */
+    max-width: 400px; 
+    width: 100%;
+    text-align: center;
+    margin: 0 auto; /* Centraliza o card dentro do wrapper */
+}
+
+.produto-container img{
+    width: 100px; /* Tamanho da logo da Home */
+    margin-bottom: 15px;
+}
+
+.produto-container h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: var(--cor-secundaria); /* Cor de Títulos da Home */
+}
+
+/* ===========================
+   CAMPOS DE FORMULÁRIO (INPUTS/SELECT/TEXTAREA)
+=========================== */
+.input-group,
+.descriçao {
+    margin-bottom: 20px;
+}
+
+/* Estilo unificado para inputs, select e textarea */
+.input-group input,
+.input-group-cadastro1 select,
+.descriçao textarea {
+    width: 100%;
+    padding: 12px;
+    /* Estilo de borda e raio da Home */
+    border: 1px solid var(--cor-borda-input); 
+    border-radius: 8px;
+    /* Fundo do input */
+    background-color: var(--cor-fundo-input); 
+    font-size: 1rem;
+    height: 50px;
+}
+
+/* Ajuste específico para textarea (descrição) */
+.descriçao textarea {
+    height: auto;
+    resize: vertical;
+}
+
+/* Oculta o input de arquivo original e estiliza o label */
+.input-file-label {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: var(--cor-fundo-input);
+    border: 1px dashed var(--cor-primaria); /* Borda tracejada para arquivo */
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+
+/* SELECIONAR TIPO DE TORRA (Grupo de 1 campo) */
+.input-group-cadastro1 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* ===========================
+   BOTÃO PRIMÁRIO (Publicar)
+=========================== */
+.botao-principal {
+    width: 100%;
+    /* Cor e estilo do botão principal da Home */
+    background-color: var(--cor-primaria); 
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px; /* Padrão da Home */
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.botao-principal:hover {
+    /* Cor de hover da Home */
+    background-color: #6b3410; 
+}
+
+/* Estilo para mensagens de erro/sucesso */
+p[style="color: red;"],
+p[style="color: green;"] {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+p[style="color: red;"] {
+    background-color: #fcebeb;
+    color: #cc0000 !important;
+    border: 1px solid #cc0000;
+}
+p[style="color: green;"] {
+    background-color: #e6ffe6;
+    color: #008000 !important;
+    border: 1px solid #008000;
+}

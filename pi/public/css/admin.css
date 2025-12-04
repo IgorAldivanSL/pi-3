@@ -1,0 +1,331 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Poppins para corpo e Inter para painel)
+   Usaremos Poppins, mas manteremos uma Sans-Serif limpa e profissional
+   Playfair Display será usada apenas para títulos internos de seções.
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE ADMIN)
+=========================== */
+:root{
+  /* Paleta da Marca */
+  --cor-primaria: #A0522D;        /* Sienna - Marrom de destaque (Botões) */
+  --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover do botão */
+  --cor-fundo-claro: #F9F7F4;     /* Creme Suave da Home (usado como fundo principal) */
+  --cor-superficie: #FFFFFF;      /* Branco puro para sidebar e cards */
+  --cor-texto-principal: #3D2D2D; /* Quase preto, para legibilidade */
+  --cor-borda-suave: #EDEAE4;     /* Bege claro para bordas e linhas divisórias */
+  --cor-muted: #6B7280;           /* Cinza para texto secundário */
+  --cor-destaque-admin: #D4AF37;  /* Ouro Velho (Pode ser usado para ícones ou estados ativos) */
+  --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra mais sutil */
+  
+  /* Tipografia */
+  --font-serif: 'Playfair Display', serif; 
+  --font-sans: 'Poppins', sans-serif; 
+}
+
+/* ===========================
+   RESET / BASE
+=========================== */
+*{
+    box-sizing:border-box;
+    font-family: var(--font-sans);
+}
+body{
+    margin:0;
+    background:var(--cor-fundo-claro);
+    color:var(--cor-texto-principal);
+}
+
+/* ------------------------------------- */
+/* ADMIN SHELL - LAYOUT DE DUAS COLUNAS */
+/* ------------------------------------- */
+.admin-shell{
+  display:flex;
+  min-height:100vh;
+}
+.admin-sidebar{
+  width:250px; /* Levemente mais larga */
+  background:var(--cor-superficie);
+  padding:24px 20px;
+  border-right:1px solid var(--cor-borda-suave);
+  display:flex;
+  flex-direction:column;
+  gap:25px; /* Mais espaço */
+  flex-shrink: 0; 
+}
+.admin-sidebar .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--cor-texto-principal);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.admin-sidebar img{
+    height:36px;
+    width: 36px;
+    object-fit: cover;
+}
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+.nav button{
+    background:transparent;
+    border:none;
+    padding:10px 15px;
+    text-align:left;
+    border-radius:6px;
+    cursor:pointer;
+    color:var(--cor-muted);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.nav button:hover{
+    background:var(--cor-borda-suave);
+    color:var(--cor-primaria);
+    font-weight:600;
+}
+/* Estado Ativo (para a página que estiver carregada) */
+.nav button.active {
+    background: var(--cor-primaria);
+    color: var(--cor-superficie);
+    font-weight: 600;
+}
+.nav button.active:hover {
+    background: var(--cor-primaria-hover);
+    color: var(--cor-superficie);
+}
+
+
+.logout-form{
+    margin-top:auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-borda-suave);
+}
+.logout-form button{
+    width:100%;
+    padding:12px;
+    border-radius:50px; /* Padrão arredondado dos botões da Home */
+    border:2px solid var(--cor-primaria);
+    background:transparent;
+    cursor:pointer;
+    color:var(--cor-primaria);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.logout-form button:hover{
+    background:var(--cor-primaria);
+    color:var(--cor-superficie);
+}
+
+/* ------------------------------------- */
+/* ADMIN MAIN - CONTEÚDO PRINCIPAL */
+/* ------------------------------------- */
+.admin-main{
+  flex:1; 
+  display:flex;
+  flex-direction:column;
+}
+.admin-header{
+  height:70px; /* Levemente mais alto */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  background:var(--cor-superficie);
+  border-bottom:1px solid var(--cor-borda-suave);
+}
+.admin-header strong {
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+.admin-header #toggleSidebar {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--cor-texto-principal);
+}
+
+.admin-content{
+  padding:30px;
+  /* Garante que o conteúdo AJAX se ajuste */
+  width: 100%; 
+}
+
+/* Estilo para Títulos Internos (Harmonização) */
+.admin-content h1, .admin-content h2 {
+    font-family: var(--font-serif);
+    color: var(--cor-texto-principal);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.admin-content h1 { font-size: 2.2rem; }
+.admin-content h2 { font-size: 1.8rem; }
+
+
+/* ------------------------------------- */
+/* COMPONENTES GENÉRICOS DE CONTEÚDO */
+/* ------------------------------------- */
+.welcome{
+    background:var(--cor-superficie);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:var(--sombra-card);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza a caixa de boas-vindas */
+}
+.welcome h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+.welcome p {
+    color: var(--cor-muted);
+}
+.card{
+    background:var(--cor-superficie);
+    padding:20px;
+    border-radius:12px;
+    box-shadow:var(--sombra-card);
+    margin-bottom:20px;
+}
+.table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--cor-superficie);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow: var(--sombra-card);
+}
+.table th, .table td{
+    padding:15px 12px;
+    border-bottom:1px solid var(--cor-borda-suave);
+    text-align:left;
+    color: var(--cor-texto-principal);
+}
+.table th{
+    background: var(--cor-fundo-claro); /* Fundo sutil para cabeçalho */
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+.table tr:last-child td{
+    border-bottom: none;
+}
+.actions a, .actions button {
+    margin-right:8px;
+    color:var(--cor-primaria);
+    text-decoration:none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.actions a:hover, .actions button:hover{
+    color:var(--cor-primaria-hover);
+    text-decoration: underline;
+}
+
+small.muted{
+    color:var(--cor-muted);
+}
+.admin-content .form-group {
+    margin-bottom: 20px;
+}
+.admin-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+}
+.admin-content input[type="text"], 
+.admin-content input[type="password"], 
+.admin-content input[type="email"], 
+.admin-content input[type="number"], 
+.admin-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 8px;
+    background: var(--cor-fundo-claro);
+    color: var(--cor-texto-principal);
+}
+.admin-content button[type="submit"] {
+    padding: 12px 25px;
+    border: none;
+    background: var(--cor-primaria);
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.admin-content button[type="submit"]:hover {
+    background: var(--cor-primaria-hover);
+}
+
+
+/* ------------------------------------- */
+/* RESPONSIVIDADE BÁSICA (Painel) */
+/* ------------------------------------- */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 80px; /* Colapsa para telas menores */
+        padding: 15px 10px;
+    }
+    .admin-sidebar .brand span {
+        display: none;
+    }
+    .admin-sidebar .brand img {
+        margin: 0 auto;
+    }
+    .nav button {
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 0.85rem;
+    }
+    .logout-form button {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-shell {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .admin-sidebar .brand {
+        display: none; /* Oculta a marca no mobile (pode ser trazida para o header) */
+    }
+    .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logout-form {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+    .logout-form button {
+        width: auto;
+        margin: 10px auto;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR (PAINEL ADMIN)
+=========================== */
+:root {
+    --cor-primaria: #8B4513;        /* Marrom Sela - Destaque (Botão) */
+    --cor-primaria-hover: #6b3410;  /* Hover do Destaque */
+    --cor-secundaria: #3D2D2D;      /* Marrom Escuro (Texto/Títulos) */
+    --cor-fundo-input: #f9f9f9;     /* Fundo input quase branco */
+    --cor-borda-input: #DDD;        /* Borda sutil */
+    --cor-fundo-painel: #F8F8F8;    /* Fundo neutro do painel */
+    --sombra-card: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+    --font-serif: 'Playfair Display', serif; 
+}
+
+/* ⚠️ Correção de Layout: Não aplicar display: flex ao body */
+/* O body está definido no arquivo principal do painel. */
+body {
+    color: var(--cor-secundaria);
+}
+
+/* ===========================
+   CONTAINER DO FORMULÁRIO (O CARD)
+=========================== */
+.editadm-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-card);
+    width: 100%;
+    max-width: 450px; /* Largura padrão para formulários de cadastro */
+    text-align: left; /* **CRUCIAL: Alinha o conteúdo interno à esquerda** */
+    margin: 0 auto; /* Centraliza o card DENTRO da área de conteúdo do painel */
+}
+
+.editadm-container h2 {
+    font-family: var(--font-serif);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    color: var(--cor-secundaria);
+    text-align: center; /* Título centralizado */
+    font-weight: 700;
+}
+
+/* ===========================
+   INPUTS E GRUPOS
+=========================== */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    border: 1px solid var(--cor-borda-input); 
+    border-radius: 8px; /* Arredondamento suave */
+    background-color: var(--cor-fundo-input); 
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Placeholder sutil */
+::placeholder {
+    color: #999;
+    opacity: 1; 
+}
+
+/* Foco */
+.input-group input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 1px var(--cor-primaria);
+    background-color: #fff;
+}
+
+/* ===========================
+   CHECKBOX (ATIVO)
+=========================== */
+.checkbox-container {
+    margin: 20px 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    /* Estilos customizados opcionais podem ser adicionados aqui */
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cor-primaria); /* Usa a cor primária para o checkbox */
+}
+
+
+/* ===========================
+   BOTÃO SALVAR
+=========================== */
+.editadm-container button[type="submit"] {
+    width: 100%;
+    background-color: var(--cor-primaria); 
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px; /* Arredondamento suave e padrão */
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.editadm-container button[type="submit"]:hover {
+    background-color: var(--cor-primaria-hover); 
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+@media (max-width: 480px) {
+    .editadm-container {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none; 
+    }
+}

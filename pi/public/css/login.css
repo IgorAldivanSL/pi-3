@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE
+=========================== */
+:root {
+    --cor-primaria: #8B4513;        /* Marrom Sela - Destaque */
+    --cor-secundaria: #4b2e19;      /* Marrom Escuro - Títulos/Texto */
+    --cor-fundo-externo: #F8F8F8;   /* Fundo claro para tela cheia */
+    --cor-fundo-card: #FFFFFF;      /* Fundo do card de login */
+    --cor-fundo-input: #f8f8f8;     /* Fundo input cinza claro */
+    --cor-borda-input: #bbb;
+    --sombra-card: 0 5px 25px rgba(0, 0, 0, 0.08); /* Sombra Leve da Home */
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+   /* Usando o fundo neutro do painel */
+   background-color: var(--cor-fundo-externo);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+   padding: 20px;
+}
+
+/* ===========================
+   LOGIN CONTAINER (O CARD)
+=========================== */
+.login-container {
+   /* Fundo branco e sombra leve */
+   background-color: var(--cor-fundo-card);
+   padding: 40px;
+   border-radius: 15px; /* Padrão da Home */
+   box-shadow: var(--sombra-card);
+   width: 20%;
+   max-width: 380px; /* Largura máxima para formulários */
+   min-width: 300px;
+   text-align: center;
+}
+
+.login-container img.logo {
+   width: 80px; /* Ajuste para melhor visualização */
+   margin-bottom: 15px;
+}
+
+.login-container h2 {
+   margin-bottom: 30px;
+   font-size: 2rem;
+   color: var(--cor-secundaria);
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+.input-group {
+   position: relative;
+   margin-bottom: 20px;
+}
+
+.input-group input {
+   height: 50px;
+   width: 100%;
+   padding: 12px; /* Simplificado */
+   border: 1px solid var(--cor-borda-input);
+   border-radius: 8px; /* Padrão da Home */
+   background-color: var(--cor-fundo-input);
+   font-size: 1rem;
+}
+
+/* Icons (Se você ainda estiver usando, as regras devem ficar assim) */
+.input-group i {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 15px;
+   color: #555;
+}
+
+/* ===========================
+   BOTÃO ENTRAR
+=========================== */
+.botao-principal {
+    /* Usando a classe global do projeto */
+    width: 100%;
+    background-color: var(--cor-primaria); /* Marrom Sela */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.botao-principal:hover {
+    background-color: #6b3410; /* Hover do botão da Home */
+}
+
+/* ===========================
+   MENSAGENS DE ERRO
+=========================== */
+.mensagem-erro {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: left;
+    background-color: #fcebeb;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+   .login-container {
+       width: 80%;
+   }
+}
+@media (max-width: 480px) {
+    .login-container {
+        width: 95%;
+    }
+}

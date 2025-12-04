@@ -1,0 +1,203 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE PREMIUM)
+=========================== */
+:root {
+    /* Paleta - Tons Ricos e Terrosos da Home */
+    --cor-primaria: #A0522D;        /* Sienna - Marrom de destaque (Botões) */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover do botão */
+    --cor-secundaria: #3D2D2D;      /* Quase preto, mas suave para Títulos/Texto */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-externo: #F9F7F4;   /* Creme Suave da Home */
+    --cor-fundo-card: #FFFFFF;      /* Branco puro para o card de login */
+    
+    /* Elementos */
+    --cor-fundo-input: #F9F9F9;     /* Fundo input quase branco */
+    --cor-borda-input: #DDD;
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra visível e elegante */
+    
+    /* Mensagens */
+    --cor-sucesso: #4CAF50;
+    --cor-fundo-sucesso: #e8f5e9;
+    --cor-erro: #cc0000;
+    --cor-fundo-erro: #fcebeb;
+
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;      
+}
+
+/* ===========================
+   RESET / ESTRUTURA GLOBAL
+=========================== */
+* {
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+}
+
+body {
+   background-color: var(--cor-fundo-externo);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh; /* Usa min-height para acomodar formulário mais longo */
+   margin: 0;
+   padding: 40px 20px; /* Padding vertical para não encostar na borda */
+}
+
+/* ===========================
+   CADASTRO CONTAINER (O CARD)
+=========================== */
+.cadastro-container {
+   background-color: var(--cor-fundo-card);
+   padding: 40px;
+   border-radius: 10px;
+   box-shadow: var(--sombra-card);
+   width: 100%; 
+   max-width: 450px; /* Levemente mais largo para acomodar mais campos */
+   text-align: center;
+}
+
+.cadastro-container img.logo {
+   width: 90px;
+   margin-bottom: 20px;
+}
+
+/* Título com a Fonte Serif e cor principal */
+.cadastro-container h2 {
+   font-family: var(--font-serif);
+   margin-bottom: 30px;
+   font-size: 2.2rem;
+   color: var(--cor-secundaria);
+   font-weight: 700;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+.input-group {
+   position: relative;
+   margin-bottom: 18px; /* Espaço ajustado para mais campos */
+}
+
+.input-group input {
+   height: 50px;
+   width: 100%;
+   padding: 12px;
+   border: 1px solid var(--cor-borda-input);
+   border-radius: 8px;
+   background-color: var(--cor-fundo-input);
+   font-size: 1rem;
+   color: var(--cor-secundaria);
+   transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Destaque ao Focar */
+.input-group input:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--cor-primaria);
+}
+
+/* ===========================
+   BOTÃO CADASTRAR (Padrão da Home)
+=========================== */
+.botao-principal {
+    width: 100%;
+    background-color: var(--cor-primaria); 
+    color: white;
+    border: none;
+    padding: 15px; 
+    border-radius: 50px; /* Arredondamento suave */
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 10px; /* Espaço extra após o último input */
+}
+
+.botao-principal:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* ===========================
+   MENSAGENS DE ERRO/SUCESSO
+=========================== */
+.mensagem-erro {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: left;
+    background-color: var(--cor-fundo-erro);
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+}
+.mensagem-erro ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.mensagem-sucesso {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+    background-color: var(--cor-fundo-sucesso);
+    color: var(--cor-sucesso);
+    border: 1px solid var(--cor-sucesso);
+}
+
+
+/* ===========================
+   LINK SECUNDÁRIO (Faça login aqui)
+=========================== */
+.link-secundario {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: #666;
+}
+.link-secundario a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.link-secundario a:hover {
+    color: var(--cor-primaria-hover);
+    text-decoration: underline;
+}
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+@media (max-width: 768px) {
+   .cadastro-container {
+       width: 90%;
+       max-width: none;
+   }
+   .cadastro-container h2 {
+       font-size: 2rem;
+   }
+}
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+    .cadastro-container {
+        padding: 30px 20px;
+    }
+    .cadastro-container img.logo {
+        width: 75px;
+    }
+}

@@ -1,0 +1,153 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ===========================
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE ADMIN)
+=========================== */
+:root {
+    /* Paleta */
+    --cor-primaria: #A0522D;        /* Sienna - Destaque Principal */
+    --cor-primaria-hover: #8B4513;  
+    --cor-secundaria: #3D2D2D;      /* Texto Principal */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-claro: #F9F7F4;     /* Fundo principal do Admin */
+    --cor-superficie: #FFFFFF;      /* Branco para a tabela/card */
+    
+    /* Elementos */
+    --cor-borda-suave: #EDEAE4;     /* Borda da tabela */
+    --cor-muted: #6B7280;           /* Texto Secundário */
+    --cor-sucesso: #4CAF50;         /* Status Ativo */
+    --cor-erro: #C62828;            /* Botão Excluir */
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05); 
+
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;      
+}
+
+/* ===========================
+   LAYOUT GERAL
+=========================== */
+.admin-content-wrapper {
+    width: 100%;
+    /* No painel, o wrapper é usado para centralizar, mas a listagem deve ser full width */
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.container-table {
+    width: 100%;
+    max-width: 1200px; /* Limite de largura para não esticar demais em telas muito amplas */
+    margin: 0 auto;
+}
+
+/* ===========================
+   TÍTULO E TABELA
+=========================== */
+.container-table h2 {
+    font-family: var(--font-serif);
+    color: var(--cor-secundaria);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cor-superficie);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--sombra-card);
+    margin-bottom: 20px;
+}
+
+/* Cabeçalho da Tabela */
+table th {
+    background: var(--cor-fundo-claro);
+    color: var(--cor-primaria);
+    font-weight: 600;
+    padding: 15px 12px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Linhas e Células */
+table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--cor-borda-suave);
+    color: var(--cor-secundaria);
+    font-size: 0.95rem;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ------------------
+   STATUS
+------------------ */
+.status-ativo {
+    color: var(--cor-sucesso);
+    font-weight: 600;
+}
+.status-inativo {
+    color: var(--cor-muted);
+    font-weight: 500;
+}
+
+/* ------------------
+   AÇÕES (BOTÕES/LINKS)
+------------------ */
+.acoes-admin a {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 50px;
+    margin-right: 8px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.botao-editar {
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    background: transparent;
+}
+.botao-editar:hover {
+    background: var(--cor-primaria);
+    color: var(--cor-superficie);
+}
+
+.botao-excluir {
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+    background: transparent;
+}
+.botao-excluir:hover {
+    background: var(--cor-erro);
+    color: var(--cor-superficie);
+}
+
+
+/* ===========================
+   RESPONSIVIDADE (Tabela)
+=========================== */
+@media (max-width: 768px) {
+    .container-table {
+        margin: 0;
+    }
+    /* Tornar a tabela responsiva (scroll horizontal) */
+    .admin-content-wrapper {
+        overflow-x: auto;
+    }
+    table {
+        min-width: 700px; /* Garante que a tabela não quebre em colunas */
+    }
+}
