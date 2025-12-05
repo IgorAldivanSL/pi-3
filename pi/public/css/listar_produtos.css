@@ -15,7 +15,7 @@
     
     /* Fundo e Superfícies */
     --cor-fundo-claro: #F9F7F4;     /* Fundo principal do Admin */
-    --cor-superficie: #FFFFFF;      /* Branco para a tabela/card */
+    --cor-superficie: #FFFFFF;      /* Branco para o card */
     
     /* Elementos */
     --cor-borda-suave: #EDEAE4;     /* Borda do card */
@@ -32,11 +32,18 @@
 /* ===========================
    LAYOUT GERAL E TÍTULO
 =========================== */
+* {
+    box-sizing: border-box;
+    font-family: var(--font-sans); 
+}
+
 .admin-content-wrapper {
     width: 100%;
 }
 
 .cafe-listagem {
+    max-width: 900px;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -44,21 +51,22 @@
     font-family: var(--font-serif);
     color: var(--cor-secundaria);
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 30px;
     text-align: center;
 }
 
 /* ===========================
-   CONTAINER DE CARDS
+   CONTAINER DE CARDS (GRID RESPONSIVO)
 =========================== */
 .cafes-container {
+    /* Define o grid. Os cards terão no mínimo 280px e o grid tentará ajustar o máximo possível. */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 300px)); 
-    gap: 25px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
     width: 100%;
     
-    /* NOVIDADE: Centraliza os cards no container */
+    /* Centraliza o grid horizontalmente */
     justify-content: center; 
 }
 
@@ -67,12 +75,18 @@
 =========================== */
 .cafe-card {
     background-color: var(--cor-superficie);
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: var(--sombra-card);
     padding: 20px;
     display: flex;
     flex-direction: column;
-    min-height: 480px; /* Adiciona uma altura mínima para padronizar */
+    min-height: 480px; 
+    transition: transform 0.2s ease;
+}
+
+.cafe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Imagem e Preço */
@@ -81,13 +95,16 @@
     margin-bottom: 15px;
     overflow: hidden;
     border-radius: 8px;
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 10; /* Levemente mais alto que 16/9 */
 }
 .cafe-imagem img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+}
+.cafe-card:hover .cafe-imagem img {
+    transform: scale(1.05);
 }
 
 .cafe-preco {
@@ -96,35 +113,35 @@
     right: 10px;
     background-color: var(--cor-primaria);
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 50px; /* Pill shape */
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Nome e Descrição */
 .cafe-card h3 {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--cor-secundaria);
     margin: 0 0 8px 0;
 }
 
-/* NOVIDADE: Limita a descrição a 3 linhas com reticências */
 .cafe-card p {
     color: var(--cor-muted);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin: 0 0 15px 0;
     flex-grow: 1; 
 
-    /* Propriedades para truncar o texto após 3 linhas */
+    /* Truncamento para 3 linhas */
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-     /* Define o limite para 3 linhas */
-    line-height: 1.4; /* Altura da linha para controle preciso */
-    max-height: calc(1.4em * 3); /* Altura máxima baseada no line-height */
+    -webkit-line-clamp: 3; /* Limite em 3 linhas */
+    line-height: 1.4; 
+    max-height: calc(1.4em * 3); 
+    text-overflow: ellipsis; /* Adiciona elipses no final */
 }
 
 
@@ -132,7 +149,7 @@
 .cafe-info {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 5px 10px;
+    gap: 7px 15px; /* Espaçamento ajustado */
     padding-top: 15px;
     border-top: 1px dashed var(--cor-borda-suave);
     margin-bottom: 20px;
@@ -149,13 +166,13 @@
 }
 
 /* ===========================
-   BOTÕES DE AÇÃO (Padrão Admin)
+   BOTÕES DE AÇÃO 
 =========================== */
 .card-botoes {
     display: flex;
     justify-content: space-between;
-    margin-top: auto; /* Garante que os botões fiquem alinhados na base */
-    padding-top: 10px;
+    margin-top: auto; 
+    padding-top: 15px;
 }
 
 .card-botoes a {
@@ -168,6 +185,7 @@
     margin: 0 5px;
     transition: all 0.2s;
     font-size: 0.95rem;
+    white-space: nowrap; /* Evita quebras de linha em "Editar" ou "Excluir" */
 }
 
 .botao-editar {
@@ -192,14 +210,43 @@
 
 
 /* ===========================
-   RESPONSIVIDADE (Cards)
+   RESPONSIVIDADE 
 =========================== */
-@media (max-width: 600px) {
-    .cafes-container {
-        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+
+/* BREAKPOINT TABLET (max-width: 768px) */
+@media (max-width: 768px) {
+    .cafe-listagem h2 {
+        font-size: 2rem;
     }
+    .cafes-container {
+        gap: 20px; 
+    }
+}
+
+
+/* BREAKPOINT CELULAR (max-width: 480px) */
+@media (max-width: 480px) {
+    .cafe-listagem h2 {
+        font-size: 1.8rem;
+    }
+    .cafes-container {
+        grid-template-columns: 1fr; /* Uma coluna única */
+        padding: 0 15px; /* Adiciona padding nas bordas da listagem */
+        gap: 25px;
+    }
+    
+    .cafe-card {
+        padding: 15px;
+        min-height: auto;
+    }
+    
+    .cafe-card h3 {
+        font-size: 1.4rem;
+    }
+
     .card-botoes a {
-        padding: 10px 10px;
-        font-size: 0.9rem;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        margin: 0 3px;
     }
 }

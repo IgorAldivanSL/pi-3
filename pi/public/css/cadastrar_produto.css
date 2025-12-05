@@ -1,13 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* ===========================
    DEFINIÇÕES DE COR (DO PAINEL ADMIN)
 =========================== */
 :root {
-    --cor-primaria: #8B4513; /* Marrom Sela - Destaque */
-    --cor-secundaria: #4b2e19; /* Marrom Escuro - Títulos/Texto */
-    --cor-fundo-input: #f8f8f8; /* Cinza bem claro */
+    --cor-primaria: #A0522D;        /* Sienna - Destaque (Ajustado para o padrão do Painel) */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover */
+    --cor-secundaria: #3D2D2D;      /* Quase preto - Títulos/Texto */
+    --cor-fundo-claro: #F9F7F4;     /* Fundo principal do painel */
+    --cor-superficie: #FFFFFF;      /* Branco para o card */
+    --cor-fundo-input: #f8f8f8;     /* Fundo input quase branco */
+    --cor-borda-suave: #EDEAE4;     /* Borda do painel */
     --cor-borda-input: #bbb;
+    --sombra-card: 0 5px 25px rgba(0, 0, 0, 0.08); 
+    
+    /* Mensagens */
+    --cor-sucesso: #008000;
+    --cor-fundo-sucesso: #e6ffe6;
+    --cor-erro: #cc0000;
+    --cor-fundo-erro: #fcebeb;
+    
+    /* Tipografia */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;
 }
 
 /* ===========================
@@ -15,18 +31,12 @@
 =========================== */
 * {
     box-sizing: border-box;
-    /* Usando Poppins, padrão da Home */
-    font-family: "Poppins", sans-serif; 
+    font-family: var(--font-sans); 
 }
-
-/* O body e o admin-content-wrapper já estão no dashboard.css,
-   mas estas regras garantem que o arquivo funcione sozinho (se for o caso) */
-
 
 /* ===========================
    WRAPPER PARA CENTRALIZAÇÃO
 =========================== */
-/* Esta classe deve ser adicionada no dashboard.css ou aqui se o arquivo for standalone */
 .admin-content-wrapper {
     max-width: 900px;
     margin-left: auto;
@@ -39,34 +49,30 @@
    PRODUTO CONTAINER (O CARD)
 =========================== */
 .produto-container {
-    background-color: #ffffff;
-    padding: 30px;
-    /* Borda e Sombra do padrão Home/Cards de Café */
+    background-color: var(--cor-superficie);
+    padding: 40px; /* Mais padding no desktop */
     border-radius: 15px; 
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-    /* Mantive 400px para formulários que tendem a ser mais estreitos */
+    box-shadow: var(--sombra-card);
     max-width: 400px; 
     width: 100%;
     text-align: center;
-    margin: 0 auto; /* Centraliza o card dentro do wrapper */
-}
-
-.produto-container img{
-    width: 100px; /* Tamanho da logo da Home */
-    margin-bottom: 15px;
+    margin: 0 auto; 
 }
 
 .produto-container h2 {
+    font-family: var(--font-serif);
     margin-bottom: 30px;
     font-size: 2rem;
-    color: var(--cor-secundaria); /* Cor de Títulos da Home */
+    color: var(--cor-secundaria); 
+    font-weight: 700;
 }
 
 /* ===========================
    CAMPOS DE FORMULÁRIO (INPUTS/SELECT/TEXTAREA)
 =========================== */
 .input-group,
-.descriçao {
+.descriçao,
+.input-group-cadastro1 {
     margin-bottom: 20px;
 }
 
@@ -76,18 +82,16 @@
 .descriçao textarea {
     width: 100%;
     padding: 12px;
-    /* Estilo de borda e raio da Home */
     border: 1px solid var(--cor-borda-input); 
     border-radius: 8px;
-    /* Fundo do input */
     background-color: var(--cor-fundo-input); 
     font-size: 1rem;
     height: 50px;
+    color: var(--cor-secundaria);
 }
 
-/* Ajuste específico para textarea (descrição) */
 .descriçao textarea {
-    height: auto;
+    height: 120px; /* Altura padrão mais confortável */
     resize: vertical;
 }
 
@@ -98,19 +102,17 @@
     height: 50px;
     line-height: 50px;
     background-color: var(--cor-fundo-input);
-    border: 1px dashed var(--cor-primaria); /* Borda tracejada para arquivo */
+    border: 2px dashed var(--cor-primaria); /* Borda tracejada mais grossa */
     border-radius: 8px;
     cursor: pointer;
     color: var(--cor-secundaria);
     font-weight: 500;
-    margin-top: 10px;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
-
-/* SELECIONAR TIPO DE TORRA (Grupo de 1 campo) */
-.input-group-cadastro1 {
-    display: flex;
-    margin-bottom: 20px;
+.input-file-label:hover {
+    background-color: #efefef;
+    border-color: var(--cor-primaria-hover);
 }
 
 /* ===========================
@@ -118,38 +120,98 @@
 =========================== */
 .botao-principal {
     width: 100%;
-    /* Cor e estilo do botão principal da Home */
     background-color: var(--cor-primaria); 
     color: white;
     border: none;
     padding: 14px;
-    border-radius: 8px; /* Padrão da Home */
+    border-radius: 50px; /* Arredondado para seguir o padrão dos botões do Painel Admin/Home */
     font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.2s;
-    font-weight: 500;
+    font-weight: 600; /* Mais peso */
+    margin-top: 10px;
 }
 
 .botao-principal:hover {
-    /* Cor de hover da Home */
-    background-color: #6b3410; 
+    background-color: var(--cor-primaria-hover); 
 }
 
 /* Estilo para mensagens de erro/sucesso */
-p[style="color: red;"],
-p[style="color: green;"] {
+.produto-container p {
     padding: 10px;
     border-radius: 6px;
     margin-top: 15px;
     font-weight: 500;
+    text-align: left;
+    line-height: 1.4;
 }
-p[style="color: red;"] {
-    background-color: #fcebeb;
-    color: #cc0000 !important;
-    border: 1px solid #cc0000;
+p[style*="color: red"],
+p[style*="color: #cc0000"] {
+    background-color: var(--cor-fundo-erro);
+    color: var(--cor-erro) !important;
+    border: 1px solid var(--cor-erro);
 }
-p[style="color: green;"] {
-    background-color: #e6ffe6;
-    color: #008000 !important;
-    border: 1px solid #008000;
+p[style*="color: green"],
+p[style*="color: #008000"] {
+    background-color: var(--cor-fundo-sucesso);
+    color: var(--cor-sucesso) !important;
+    border: 1px solid var(--cor-sucesso);
+}
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+/* BREAKPOINT TABLET / TELAS MÉDIAS (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .admin-content-wrapper {
+        max-width: 100%; 
+    }
+    
+    .produto-container {
+        max-width: 500px; 
+        padding: 30px 25px;
+    }
+    
+    .produto-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* BREAKPOINT CELULAR (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .produto-container {
+        width: 100%;
+        max-width: none;
+        box-shadow: none; 
+        border-radius: 0;
+        padding: 20px 15px; 
+    }
+    
+    .produto-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .input-group,
+    .descriçao,
+    .input-group-cadastro1 {
+        margin-bottom: 15px;
+    }
+    
+    .input-group input,
+    .input-group-cadastro1 select,
+    .descriçao textarea,
+    .input-file-label {
+        height: 45px; 
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .botao-principal {
+        padding: 12px;
+        font-size: 1rem;
+    }
 }

@@ -1,46 +1,62 @@
+/* ===========================
+   IMPORTAÇÃO DE FONTES (Playfair Display para Títulos, Poppins para corpo)
+=========================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* ===========================
-   DEFINIÇÕES DE COR (PAINEL ADMIN)
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE ADMIN)
 =========================== */
 :root {
-    --cor-primaria: #8B4513;        /* Marrom Sela - Destaque (Botão) */
-    --cor-primaria-hover: #6b3410;  /* Hover do Destaque */
-    --cor-secundaria: #3D2D2D;      /* Marrom Escuro (Texto/Títulos) */
-    --cor-fundo-input: #f9f9f9;     /* Fundo input quase branco */
-    --cor-borda-input: #DDD;        /* Borda sutil */
-    --cor-fundo-painel: #F8F8F8;    /* Fundo neutro do painel */
-    --sombra-card: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+    /* Paleta */
+    --cor-primaria: #A0522D;        /* Sienna - Marrom de destaque (Botões) */
+    --cor-primaria-hover: #8B4513;  /* Saddle Brown - Hover do botão */
+    --cor-secundaria: #3D2D2D;      /* Quase preto, mas suave para Títulos/Texto */
+    
+    /* Fundo e Superfícies */
+    --cor-fundo-card: #FFFFFF;      /* Branco puro para o card */
+    
+    /* Elementos */
+    --cor-fundo-input: #F9F9F9;     /* Fundo input quase branco */
+    --cor-borda-input: #DDD;
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+
+    /* Tipografia */
     --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Poppins', sans-serif;      
 }
 
-/* ⚠️ Correção de Layout: Não aplicar display: flex ao body */
-/* O body está definido no arquivo principal do painel. */
-body {
-    color: var(--cor-secundaria);
+/* ===========================
+   ESTRUTURA GLOBAL E WRAPPER
+=========================== */
+* {
+    box-sizing: border-box;
+    font-family: var(--font-sans);
 }
+
+/* O container está dentro de um wrapper de conteúdo maior (se existir no painel) */
+
 
 /* ===========================
    CONTAINER DO FORMULÁRIO (O CARD)
 =========================== */
 .editadm-container {
-    background-color: #ffffff;
+    background-color: var(--cor-fundo-card);
     padding: 40px;
     border-radius: 12px;
     box-shadow: var(--sombra-card);
     width: 100%;
     max-width: 450px; /* Largura padrão para formulários de cadastro */
-    text-align: left; /* **CRUCIAL: Alinha o conteúdo interno à esquerda** */
-    margin: 0 auto; /* Centraliza o card DENTRO da área de conteúdo do painel */
+    text-align: left; 
+    margin: 0 auto; /* Centraliza o card */
 }
 
 .editadm-container h2 {
     font-family: var(--font-serif);
     margin-bottom: 30px;
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--cor-secundaria);
-    text-align: center; /* Título centralizado */
+    text-align: center;
     font-weight: 700;
 }
 
@@ -58,24 +74,18 @@ body {
     height: 50px;
     padding: 12px;
     border: 1px solid var(--cor-borda-input); 
-    border-radius: 8px; /* Arredondamento suave */
+    border-radius: 8px;
     background-color: var(--cor-fundo-input); 
     font-size: 1rem;
     color: var(--cor-secundaria);
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Placeholder sutil */
-::placeholder {
-    color: #999;
-    opacity: 1; 
-}
-
 /* Foco */
 .input-group input:focus {
     outline: none;
     border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 1px var(--cor-primaria);
+    box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2); 
     background-color: #fff;
 }
 
@@ -86,6 +96,7 @@ body {
     margin: 20px 0;
     font-size: 1rem;
     font-weight: 500;
+    color: var(--cor-secundaria);
 }
 .checkbox-container label {
     display: flex;
@@ -94,10 +105,9 @@ body {
 }
 .checkbox-container input[type="checkbox"] {
     margin-right: 10px;
-    /* Estilos customizados opcionais podem ser adicionados aqui */
     width: 18px;
     height: 18px;
-    accent-color: var(--cor-primaria); /* Usa a cor primária para o checkbox */
+    accent-color: var(--cor-primaria); 
 }
 
 
@@ -109,17 +119,19 @@ body {
     background-color: var(--cor-primaria); 
     color: white;
     border: none;
-    padding: 15px;
-    border-radius: 50px; /* Arredondamento suave e padrão */
+    padding: 14px;
+    border-radius: 50px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
     font-weight: 600;
+    letter-spacing: 0.5px;
     margin-top: 20px;
 }
 
 .editadm-container button[type="submit"]:hover {
     background-color: var(--cor-primaria-hover); 
+    transform: translateY(-1px);
 }
 
 /* ===========================
@@ -127,8 +139,19 @@ body {
 =========================== */
 @media (max-width: 480px) {
     .editadm-container {
-        padding: 20px;
+        padding: 30px 20px;
         border-radius: 0;
         box-shadow: none; 
+        max-width: none;
+    }
+    .editadm-container h2 {
+        font-size: 1.6rem;
+    }
+    .input-group input {
+        height: 45px;
+    }
+    .editadm-container button[type="submit"] {
+        padding: 12px;
+        font-size: 1rem;
     }
 }

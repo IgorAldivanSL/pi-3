@@ -214,7 +214,9 @@ body{
 /* ------------------------------------- */
 /* RESPONSIVIDADE (Painel Cliente) */
 /* ------------------------------------- */
-@media (max-width: 768px) {
+
+/* BREAKPOINT TABLET / TELAS MÉDIAS (max-width: 768px) */
+@media screen and (max-width: 768px) {
     .client-shell {
         flex-direction: column;
     }
@@ -223,6 +225,8 @@ body{
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--cor-borda-suave);
+        /* Ajuste fino de padding para telas médias */
+        padding: 15px 10px; 
     }
     .client-sidebar .brand {
         display: none; 
@@ -231,11 +235,15 @@ body{
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        /* Ajuste fino para compactar */
+        gap: 0; 
     }
     .nav button {
         width: auto;
         text-align: center;
+        /* Adiciona margem para espaçamento horizontal */
+        margin: 0 5px; 
+        padding: 10px 10px; 
     }
     .logout-form {
         margin-top: 0;
@@ -243,11 +251,15 @@ body{
         border-top: none;
     }
     .logout-form button {
-        display: none; /* Simplifica o logout no mobile */
+        display: none; /* Oculta o botão 'Sair' para simplificar o topo no mobile */
     }
     .client-content {
         padding: 20px;
     }
+    .client-content h1 { font-size: 2rem; }
+    .client-content h2 { font-size: 1.6rem; }
+    
+    /* Componentes internos */
     .assinatura-card {
         flex-direction: column;
         max-width: 100%;
@@ -260,5 +272,28 @@ body{
     .btn-cancelar {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* BREAKPOINT CELULARES PEQUENOS (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .client-sidebar {
+        padding: 12px 5px; /* Mais compacto */
+    }
+    
+    .client-content {
+        padding: 15px; /* Conteúdo mais apertado */
+    }
+
+    .assinaturas-container {
+        gap: 15px;
+    }
+    
+    .client-content h1 { font-size: 1.8rem; }
+    .client-content h2 { font-size: 1.4rem; }
+
+    .btn-cancelar {
+        padding: 10px 15px;
+        font-size: 0.9rem;
     }
 }

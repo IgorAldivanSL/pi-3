@@ -38,7 +38,8 @@
         </div>
 
         <div class="input-group">
-            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="password" id="password-input" placeholder="Senha" required>
+            <i class="fa-solid fa-eye password-toggle-icon" id="password-toggle"></i>
 
         </div>
 
@@ -49,10 +50,24 @@
             ←  Voltar para a página inicial
     </a>
 
-    
-
 </div>
 
+<script>
+    // Agora o ID existe no HTML e o script funcionará
+    const passwordInput = document.getElementById('password-input');
+    const toggleIcon = document.getElementById('password-toggle');
+
+    toggleIcon.addEventListener('click', function() {
+        // 1. Alterna o atributo 'type' entre 'password' e 'text'
+        const currentType = passwordInput.getAttribute('type');
+        const newType = currentType === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', newType);
+
+        // 2. Alterna o ícone do Font Awesome
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
 
 </body>
 </html>

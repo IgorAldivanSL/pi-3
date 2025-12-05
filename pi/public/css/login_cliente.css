@@ -202,22 +202,48 @@ body {
 
 
 /* ===========================
-   RESPONSIVO
+   RESPONSIVIDADE PROFISSIONAL
+   (MEDIA QUERIES)
 =========================== */
-@media (max-width: 768px) {
-   .login-container {
-       width: 80%;
-   }
-   .login-container h2 {
-       font-size: 2rem;
-   }
-}
-@media (max-width: 480px) {
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT TABLET / CELULARES GRANDES (max-width: 768px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 768px) {
     .login-container {
-        width: 95%;
-        padding: 30px 20px;
+       width: 80%; 
+       padding: 30px; /* Padding interno mais compacto */
     }
+    
     .login-container img.logo {
-        width: 75px;
+        width: 70px; /* Logo um pouco menor */
+    }
+
+    .login-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT CELULARES PEQUENOS (max-width: 480px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    body {
+        /* Remove o padding lateral do corpo para o card preencher a tela */
+        padding: 0; 
+        /* Alinha o card no topo do viewport */
+        align-items: flex-start; 
+        padding-top: 50px; /* Adiciona um espaço superior, se desejar */
+    }
+
+    .login-container {
+        /* Ocupa a largura total da tela */
+        width: 100%; 
+        max-width: none; /* Ignora a largura máxima */
+        /* Zera o border-radius e a sombra quando preenche a tela */
+        border-radius: 0; 
+        box-shadow: none;
+        padding: 25px 20px; /* Padding interno apertado */
     }
 }

@@ -26,7 +26,7 @@ body {
    align-items: center;
    height: 100vh;
    margin: 0;
-   padding: 20px;
+   padding: 20px; /* Padding base para desktop/tablet */
 }
 
 /* ===========================
@@ -38,7 +38,8 @@ body {
    padding: 40px;
    border-radius: 15px; /* Padrão da Home */
    box-shadow: var(--sombra-card);
-   width: 20%;
+   /* ALTERADO: Usa largura de 90% até atingir o max-width */
+   width: 90%; 
    max-width: 380px; /* Largura máxima para formulários */
    min-width: 300px;
    text-align: center;
@@ -48,11 +49,15 @@ body {
    width: 80px; /* Ajuste para melhor visualização */
    margin-bottom: 15px;
 }
+/* ===========================
+   AJUSTE DE FONTE PARA TÍTULOS ADMIN
+=========================== */
 
 .login-container h2 {
    margin-bottom: 30px;
    font-size: 2rem;
    color: var(--cor-secundaria);
+   font-family: 'Playfair Display', serif; 
 }
 
 /* ===========================
@@ -73,8 +78,8 @@ body {
    font-size: 1rem;
 }
 
-/* Icons (Se você ainda estiver usando, as regras devem ficar assim) */
-.input-group i {
+/* Icons (CORRIGIDO: Apenas para ícones que não são o de alternar senha) */
+.input-group i:not(.password-toggle-icon) {
    position: absolute;
    top: 50%;
    transform: translateY(-50%);
@@ -117,16 +122,78 @@ body {
     border: 1px solid #cc0000;
 }
 
+/* ===========================
+   ADICIONAL: ÍCONE MOSTRAR/OCULTAR SENHA
+=========================== */
 
-
-/* Responsividade */
-@media (max-width: 768px) {
-   .login-container {
-       width: 80%;
-   }
+.password-toggle-icon {
+    position: absolute;
+    right: 15px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    
+    cursor: pointer; 
+    color: var(--cor-secundaria); 
+    opacity: 0.6; 
+    font-size: 1.1rem; 
+    transition: opacity 0.2s, color 0.2s;
 }
-@media (max-width: 480px) {
+
+.password-toggle-icon:hover {
+    opacity: 1;
+    color: var(--cor-primaria); 
+}
+
+/* Garante que o input tenha espaço para o ícone */
+.input-group input[type="password"],
+.input-group input[type="text"] {
+    padding-right: 40px; 
+}
+
+
+/* ===========================
+   RESPONSIVIDADE PROFISSIONAL
+   (MEDIA QUERIES)
+=========================== */
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT TABLET / CELULARES GRANDES (max-width: 768px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 768px) {
     .login-container {
-        width: 95%;
+       width: 80%; 
+       padding: 30px; /* Padding interno mais compacto */
+    }
+    
+    .login-container img.logo {
+        width: 70px; /* Logo um pouco menor */
+    }
+
+    .login-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT CELULARES PEQUENOS (max-width: 480px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    body {
+        /* Remove o padding lateral do corpo para o card preencher a tela */
+        padding: 0; 
+        /* Alinha o card no topo do viewport */
+        align-items: flex-start; 
+        padding-top: 50px; /* Adiciona um espaço superior, se desejar */
+    }
+
+    .login-container {
+        /* Ocupa a largura total da tela */
+        width: 100%; 
+        max-width: none; /* Ignora a largura máxima */
+        /* Zera o border-radius e a sombra quando preenche a tela */
+        border-radius: 0; 
+        box-shadow: none;
+        padding: 25px 20px; /* Padding interno apertado */
     }
 }

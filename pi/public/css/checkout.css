@@ -18,6 +18,10 @@
   --error-color: #D32F2F;
 }
 
+/* Importação de Fontes (Para garantir a Playfair para títulos) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 /* ===========================
    BASE & LAYOUT
 =========================== */
@@ -25,11 +29,8 @@
     box-sizing:border-box;
     font-family:'Poppins', sans-serif; /* Consistência com a Home */
 }
-body{
-    margin:0;
-    background:var(--bg);
-    color:var(--cor-secundaria);
-}
+/* O body aqui não é necessário, pois o layout é injetado, mas mantive as variáveis */
+
 .checkout-wrap{
     padding: 40px 28px; /* Mais padding para respirar */
     display:flex;

@@ -14,13 +14,11 @@
     --cor-secundaria: #3D2D2D;      /* Texto Principal */
     
     /* Fundo e Superfícies */
-    --cor-fundo-claro: #F9F7F4;     /* Fundo principal do Admin */
+    --cor-fundo-claro: #F9F7F4;     /* Fundo principal do Admin / Header da Tabela */
     --cor-superficie: #FFFFFF;      /* Branco para a tabela/card */
     
     /* Elementos */
     --cor-borda-suave: #EDEAE4;     /* Borda da tabela */
-    --cor-muted: #6B7280;           /* Texto Secundário */
-    --cor-sucesso: #4CAF50;         /* Status Ativo */
     --cor-erro: #C62828;            /* Botão Excluir */
     --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05); 
 
@@ -34,15 +32,14 @@
 =========================== */
 .admin-content-wrapper {
     width: 100%;
-    /* No painel, o wrapper é usado para centralizar, mas a listagem deve ser full width */
-    display: flex;
-    justify-content: flex-start; 
+    overflow-x: hidden; 
 }
 
 .container-table {
     width: 100%;
-    max-width: 1200px; /* Limite de largura para não esticar demais em telas muito amplas */
+    max-width: 1200px; 
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* ===========================
@@ -52,7 +49,7 @@
     font-family: var(--font-serif);
     color: var(--cor-secundaria);
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 2.2rem; 
     margin-bottom: 25px;
     text-align: center;
 }
@@ -62,7 +59,7 @@ table {
     border-collapse: collapse;
     background: var(--cor-superficie);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; 
     box-shadow: var(--sombra-card);
     margin-bottom: 20px;
 }
@@ -76,6 +73,7 @@ table th {
     text-align: left;
     text-transform: uppercase;
     font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
 /* Linhas e Células */
@@ -86,43 +84,39 @@ table td {
     font-size: 0.95rem;
 }
 
+/* Efeito Hover nas Linhas */
+table tr:hover {
+    background-color: var(--cor-fundo-claro); 
+}
+
 table tr:last-child td {
     border-bottom: none;
 }
 
 /* ------------------
-   STATUS
+   COLUNAS ESPECÍFICAS
 ------------------ */
-.status-ativo {
-    color: var(--cor-sucesso);
-    font-weight: 600;
-}
-.status-inativo {
-    color: var(--cor-muted);
-    font-weight: 500;
-}
+table th:nth-child(1), table td:nth-child(1) { width: 5%; } /* ID */
+table th:nth-child(6), table td:nth-child(6) { width: 15%; text-align: center; } /* Ações */
+
 
 /* ------------------
    AÇÕES (BOTÕES/LINKS)
 ------------------ */
+.acoes-admin {
+    display: flex;
+    gap: 8px;
+    justify-content: center; 
+}
+
 .acoes-admin a {
     text-decoration: none;
     font-weight: 500;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 50px;
-    margin-right: 8px;
     transition: all 0.2s;
     font-size: 0.9rem;
-}
-
-.botao-editar {
-    color: var(--cor-primaria);
-    border: 1px solid var(--cor-primaria);
-    background: transparent;
-}
-.botao-editar:hover {
-    background: var(--cor-primaria);
-    color: var(--cor-superficie);
+    white-space: nowrap; 
 }
 
 .botao-excluir {
@@ -141,13 +135,14 @@ table tr:last-child td {
 =========================== */
 @media (max-width: 768px) {
     .container-table {
-        margin: 0;
+        padding: 0; 
     }
-    /* Tornar a tabela responsiva (scroll horizontal) */
+    /* Envolve a tabela em um wrapper para permitir o scroll horizontal */
     .admin-content-wrapper {
-        overflow-x: auto;
+        overflow-x: auto; 
     }
     table {
-        min-width: 700px; /* Garante que a tabela não quebre em colunas */
+        min-width: 800px; /* Garante que a tabela tenha largura suficiente */
+        margin-bottom: 50px; 
     }
 }

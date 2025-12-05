@@ -25,7 +25,7 @@
 </div>
 
 <style>
-    /* ===========================
+ /* ===========================
    CSS Assinaturas (Meus Cafés)
 =========================== */
 
@@ -36,9 +36,15 @@
     --cor-secundaria: #3D2D2D;      /* Texto escuro */
     --cor-fundo-claro: #F9F7F4;     /* Fundo Creme Suave */
     --cor-fundo-card: #FFFFFF;      /* Branco puro para cards */
-    --cor-destaque: #D4AF37;        /* Ouro Velho */
+    --cor-destaque: #D4AF37;        /* Ouro Velho (para preço) */
     --sombra-card: 0 5px 15px rgba(0, 0, 0, 0.05); 
+    --font-serif: 'Playfair Display', serif;
 }
+
+/* Importação das fontes */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 
 /* Container Principal */
 .assinaturas-container {
@@ -47,10 +53,18 @@
     gap: 25px;
     padding: 20px 0;
     justify-content: center; /* Centraliza os cards */
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.assinatura-container h2{
+.assinaturas-container h2{
     text-align: center;
+    width: 100%;
+    font-family: var(--font-serif);
+    color: var(--cor-secundaria);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
 }
+
 /* Card de Assinatura */
 .assinatura-card {
     background: var(--cor-fundo-card);
@@ -62,9 +76,8 @@
     overflow: hidden;
     transition: transform 0.2s;
     border: 1px solid #eee; /* Borda sutil */
+    font-family: 'Poppins', sans-serif;
 }
-
-
 
 .assinatura-card:hover {
     transform: translateY(-3px);
@@ -76,20 +89,21 @@
     /* Define a largura mínima e máxima */
     width: 120px;
     min-width: 120px;
+    height: 120px;
     
     /* Usa a proporção 1/1 (quadrado) para garantir que não haja cortes indesejados */
-    aspect-ratio: 1 / 1; 
-    
     overflow: hidden;
-    /* Remove height fixo, que é agora definido por aspect-ratio */
+    /* Adiciona um fundo para imagens transparentes */
+    background-color: var(--cor-fundo-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .assinatura-imagem img {
-    width: 100%;
-    height: 100%;
-    /* Garante que a imagem preenche o espaço sem distorcer, cortando o excesso */
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    object-position: top left;
 }
 
 /* Informações do Card */
@@ -103,10 +117,11 @@
 }
 
 .assinatura-info h4 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-serif);
     font-size: 1.25rem;
     color: var(--cor-primaria); /* Título em cor primária */
     margin: 0 0 5px 0;
+    font-weight: 700;
 }
 
 .assinatura-info p {
@@ -128,12 +143,18 @@
 }
 
 .assinatura-info p:nth-child(3) strong { /* Especificamente a linha de Status */
-    color: var(--cor-secundaria); /* Texto padrão */
+    color: var(--cor-secundaria); 
 }
 
-.assinatura-info p:nth-child(3):contains("Ativa") strong {
+/* Cor específica para status ativa */
+.assinatura-info strong:has(+ p:nth-child(3)[data-status="ativa"]) {
     color: #4CAF50; /* Verde para Ativa */
 }
+/* Cor específica para status cancelada */
+.assinatura-info strong:has(+ p:nth-child(3)[data-status="cancelada"]) {
+    color: #E57373;
+}
+
 
 /* ===========================
    BOTÕES E AÇÕES
@@ -143,12 +164,13 @@
 .btn-cancelar, .btn-excluir {
     margin-top: 10px;
     padding: 8px 15px;
-    border-radius: 5px;
+    border-radius: 50px; /* Mais arredondado */
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 600;
     transition: 0.2s;
     border: none;
+    align-self: flex-start; /* Alinha o botão à esquerda */
 }
 
 /* Botão Cancelar (Primário Invertido/Perigo) */
@@ -187,21 +209,24 @@
 
 /* Alinhamento de botões quando há status cancelada */
 .assinatura-info .status-cancelada + .btn-excluir {
-    margin-left: auto;
+    margin-left: 0;
 }
 
 /* Ajuste Responsivo */
 @media (max-width: 600px) {
     .assinatura-card {
         flex-direction: column;
-        max-width: 90%;
+        max-width: 95%; /* Ocupa quase a largura total */
     }
     .assinatura-imagem {
         width: 100%;
-        height: 150px;
+        height: 180px; /* Um pouco mais alto no mobile */
     }
     .assinatura-info {
         gap: 5px;
+    }
+    .assinatura-info h4 {
+        font-size: 1.15rem;
     }
 }
 </style>

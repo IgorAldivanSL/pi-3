@@ -275,57 +275,100 @@ small.muted{
 
 
 /* ------------------------------------- */
-/* RESPONSIVIDADE BÁSICA (Painel) */
+/* ADMIN MAIN - CONTEÚDO PRINCIPAL (Adicionado .table-responsive) */
 /* ------------------------------------- */
-@media (max-width: 992px) {
+.admin-content{
+  padding:30px;
+  width: 100%; 
+}
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* ... restante dos estilos base ... */
+
+
+/* ------------------------------------- */
+/* RESPONSIVIDADE PROFISSIONAL (Painel) */
+/* ------------------------------------- */
+
+/* BREAKPOINT TABLET / TELAS MÉDIAS (max-width: 992px) */
+@media screen and (max-width: 992px) {
     .admin-sidebar {
-        width: 80px; /* Colapsa para telas menores */
+        /* Colapsa o menu lateral */
+        width: 80px; 
         padding: 15px 10px;
     }
     .admin-sidebar .brand span {
-        display: none;
+        display: none; /* Oculta o nome da marca */
     }
     .admin-sidebar .brand img {
         margin: 0 auto;
     }
     .nav button {
+        /* Centraliza o texto e reduz o padding para caber */
         text-align: center;
         padding: 10px 5px;
         font-size: 0.85rem;
     }
+    /* Oculta o botão de sair (geralmente não cabe) */
     .logout-form button {
-        font-size: 0.85rem;
+        display: none; 
     }
 }
 
-@media (max-width: 768px) {
+
+/* BREAKPOINT CELULAR (max-width: 768px) */
+@media screen and (max-width: 768px) {
     .admin-shell {
         flex-direction: column;
     }
+    
+    /* SIDEBAR VIRA UM MENU HORIZONTAL E ROLÁVEL NO TOPO */
     .admin-sidebar {
         width: 100%;
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--cor-borda-suave);
+        /* Padding mais compacto no mobile */
+        padding: 15px 10px; 
     }
     .admin-sidebar .brand {
-        display: none; /* Oculta a marca no mobile (pode ser trazida para o header) */
+        display: none; 
     }
     .nav {
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap; 
+        overflow-x: auto; /* HABILITA ROLAGEM HORIZONTAL */
+        justify-content: flex-start;
+        gap: 0;
+        margin-bottom: 5px;
     }
+    .nav button {
+        flex-shrink: 0; /* Impede que os botões encolham */
+        margin-right: 5px;
+    }
+
     .logout-form {
-        margin-top: 0;
-        padding-top: 0;
-        border-top: none;
+        display: none; /* Mantém oculto para o mobile */
     }
-    .logout-form button {
-        width: auto;
-        margin: 10px auto;
-    }
+    
     .admin-content {
+        padding: 20px 10px; /* Reduz padding para dar mais espaço */
+    }
+    .welcome {
+        max-width: 100%;
         padding: 20px;
+    }
+    
+    /* RESPONSIVIDADE DE TABELAS */
+    .table {
+        min-width: 650px; /* Largura mínima que força a rolagem horizontal */
+        box-shadow: none; 
+    }
+    .table th, .table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
     }
 }

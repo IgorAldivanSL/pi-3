@@ -41,13 +41,12 @@
     font-family: var(--font-sans);
 }
 
-
-
 /* Container do Painel Admin que envolve o formulário (para quando for carregado via AJAX) */
 .admin-content-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 50px; /* Adiciona padding para centralizar visualmente */
 }
 
 /* ===========================
@@ -56,7 +55,7 @@
 .cadastro-container {
    background-color: var(--cor-fundo-card);
    padding: 40px;
-   border-radius: 10px;
+   border-radius: 12px; /* Raio ligeiramente maior para consistência */
    box-shadow: var(--sombra-card);
    width: 100%; 
    max-width: 400px; /* Tamanho padrão de formulários admin */
@@ -74,7 +73,7 @@
 .cadastro-container h2 {
    font-family: var(--font-serif);
    margin-bottom: 30px;
-   font-size: 1.8rem; /* Tamanho ajustado para títulos internos do Admin */
+   font-size: 2rem; /* Aumentado para 2rem para destaque */
    color: var(--cor-secundaria);
    font-weight: 700;
    text-align: center;
@@ -106,7 +105,7 @@
 .input-group input:focus {
     border-color: var(--cor-primaria);
     outline: none;
-    box-shadow: 0 0 0 1px var(--cor-primaria);
+    box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2); /* Sombra suave da cor primária */
 }
 
 /* ===========================
@@ -114,7 +113,7 @@
 =========================== */
 .checkbox-container {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 0.95rem;
     color: var(--cor-secundaria);
 }
@@ -140,11 +139,11 @@
     background-color: var(--cor-primaria); 
     color: white;
     border: none;
-    padding: 12px; /* Ligeiramente menos padding que o botão principal da Home */
+    padding: 14px; /* Aumentado o padding para um botão mais proeminente */
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
     font-weight: 600;
     letter-spacing: 0.5px;
     margin-top: 10px;
@@ -152,6 +151,7 @@
 
 .botao-principal:hover {
     background-color: var(--cor-primaria-hover);
+    transform: translateY(-1px);
 }
 
 /* ===========================
@@ -188,16 +188,28 @@
    .cadastro-container {
        width: 90%;
        max-width: none;
+       padding: 30px;
    }
    .cadastro-container h2 {
-       font-size: 1.6rem;
+       font-size: 1.8rem;
    }
 }
 @media (max-width: 480px) {
-    body {
+    .admin-content-wrapper {
         padding: 20px 10px;
     }
     .cadastro-container {
         padding: 30px 20px;
+        box-shadow: none; /* Remove a sombra no mobile para melhor adaptação */
+    }
+    .cadastro-container h2 {
+        font-size: 1.6rem;
+    }
+    .input-group input {
+        height: 45px;
+    }
+    .botao-principal {
+        padding: 12px;
+        font-size: 1rem;
     }
 }

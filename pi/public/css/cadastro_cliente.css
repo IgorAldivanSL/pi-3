@@ -179,25 +179,56 @@ body {
 
 
 /* ===========================
-   RESPONSIVIDADE
+   RESPONSIVIDADE PROFISSIONAL
 =========================== */
-@media (max-width: 768px) {
-   .cadastro-container {
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT TABLET / CELULARES GRANDES (max-width: 768px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .cadastro-container {
        width: 90%;
-       max-width: none;
-   }
-   .cadastro-container h2 {
-       font-size: 2rem;
-   }
+       max-width: none; /* Deixa o 90% ser o limitador */
+       padding: 35px;
+    }
+    
+    .cadastro-container h2 {
+       font-size: 2rem; 
+       margin-bottom: 25px;
+    }
+
+    /* Otimiza a altura do formulário */
+    .input-group {
+        margin-bottom: 15px;
+    }
 }
-@media (max-width: 480px) {
+
+/* ---------------------------------------------------- */
+/* BREAKPOINT CELULARES PEQUENOS (max-width: 480px) */
+/* ---------------------------------------------------- */
+@media screen and (max-width: 480px) {
     body {
-        padding: 20px 10px;
+        /* Remove padding horizontal para o container preencher a tela */
+        padding: 20px 0; 
+        align-items: flex-start; 
     }
     .cadastro-container {
-        padding: 30px 20px;
+        width: 100%;
+        max-width: none;
+        /* Remove arredondamento e sombra */
+        border-radius: 0; 
+        box-shadow: none; 
+        padding: 25px 20px; 
     }
     .cadastro-container img.logo {
-        width: 75px;
+        width: 70px;
+        margin-bottom: 15px;
+    }
+    .cadastro-container h2 {
+       font-size: 1.6rem; /* Título menor para caber */
+    }
+    .botao-principal {
+        padding: 12px; 
+        font-size: 1rem;
     }
 }

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* ===========================
-   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE PREMIUM)
+   DEFINIÇÕES DE COR E ESTILO BASE (TEMA COFFEE PREMIUM - Consistente com checkout.css)
 =========================== */
 :root {
     /* Paleta - Tons Ricos e Terrosos da Home */
@@ -14,18 +14,18 @@
     --cor-secundaria: #3D2D2D;      /* Quase preto, mas suave para Títulos/Texto */
     
     /* Fundo e Superfícies */
-    --cor-fundo-externo: #F9F7F4;   /* Creme Suave da Home */
-    --cor-fundo-card: #FFFFFF;      /* Branco puro para o card de login */
+    --cor-fundo-externo: #F9F7F4;   /* Creme Suave da Home (Fundo da página) */
+    --cor-fundo-card: #FFFFFF;      /* Branco puro para o card */
     
     /* Elementos */
     --cor-fundo-input: #F9F9F9;     /* Fundo input quase branco */
     --cor-borda-input: #DDD;
     --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra visível e elegante */
     
-    /* Mensagens */
-    --cor-sucesso: #4CAF50;
+    /* Mensagens (Consistente com checkout.css) */
+    --cor-sucesso: #4CAF50;         /* Verde */
     --cor-fundo-sucesso: #e8f5e9;
-    --cor-erro: #cc0000;
+    --cor-erro: #cc0000;            /* Vermelho forte */
     --cor-fundo-erro: #fcebeb;
 
     /* Tipografia */
@@ -41,6 +41,15 @@
     font-family: var(--font-sans);
 }
 
+body {
+    background-color: var(--cor-fundo-externo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    margin: 0;
+}
 
 
 /* ===========================
@@ -53,13 +62,8 @@
    box-shadow: var(--sombra-card);
    width: 100%; 
    max-width: 450px;
-   text-align: left; /* Garante que o conteúdo interno comece à esquerda */
-   margin: 0 auto; /* Opcional: Centraliza o CARD DENTRO do client-content se este for maior que 450px */
-}
-
-.cadastro-container img.logo {
-   width: 90px;
-   margin-bottom: 20px;
+   text-align: left;
+   margin: 0 auto;
 }
 
 /* Título com a Fonte Serif e cor principal */
@@ -69,15 +73,15 @@
    font-size: 2.2rem;
    color: var(--cor-secundaria);
    font-weight: 700;
-   text-align: center; /* Garante que o título "Editar Informações" fique centralizado */
+   text-align: center;
 }
 
 /* ===========================
-   LABELS (NOVO)
+   LABELS
 =========================== */
 .input-group label {
     display: block;
-    text-align: left; /* Alinha o texto da label à esquerda */
+    text-align: left;
     margin-bottom: 5px;
     font-weight: 500;
     color: var(--cor-secundaria);
@@ -126,7 +130,7 @@
     transition: background-color 0.2s;
     font-weight: 600;
     letter-spacing: 0.5px;
-    margin-top: 20px; /* Espaço extra para destacar o botão */
+    margin-top: 20px;
 }
 
 .botao-principal:hover {
@@ -161,26 +165,6 @@
     background-color: var(--cor-fundo-sucesso);
     color: var(--cor-sucesso);
     border: 1px solid var(--cor-sucesso);
-}
-
-
-/* ===========================
-   LINK SECUNDÁRIO (Não usado aqui, mas mantido para consistência)
-=========================== */
-.link-secundario {
-    margin-top: 25px;
-    font-size: 0.95rem;
-    color: #666;
-}
-.link-secundario a {
-    color: var(--cor-primaria);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-.link-secundario a:hover {
-    color: var(--cor-primaria-hover);
-    text-decoration: underline;
 }
 
 
