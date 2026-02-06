@@ -20,3 +20,28 @@ O objetivo do projeto é aplicar na prática os conhecimentos adquiridos em **La
 - Blade
 - SQLite
 - HTML, CSS, JavaScript
+
+## ▶️ Como executar o projeto
+```bash
+# Clone o repositório
+git clone https://github.com/seuusuario/nome-do-repositorio
+
+# Acesse a pasta do projeto
+cd nome-do-repositorio
+
+# Instale as dependências
+composer install
+
+# Copie o arquivo de ambiente
+cp .env.example .env
+
+# Gere a chave da aplicação
+php artisan key:generate
+
+# Configure o banco de dados no arquivo .env
+
+# Rode as migrations
+php artisan migrate
+
+# Inicie o servidor
+php artisan serve
