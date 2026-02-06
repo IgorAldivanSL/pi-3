@@ -1,4 +1,4 @@
-# ☕ Café Premiun
+# ☕ Café Premium
 
 ## 📌 Descrição
 Projeto acadêmico desenvolvido como trabalho interno do 3 semestre da faculdade.  
